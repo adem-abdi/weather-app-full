@@ -1,5 +1,9 @@
+
+// tusaale iyo sharaxaad: backend/controllers/weatherController.js
+
 const axios = require('axios');
 // axios = a tool that allows the backend to send HTTP requests (like calling WeatherAPI)
+
 
 const WEATHER_API_BASE_URL = 'https://api.weatherapi.com/v1/current.json';
 // This is the WeatherAPI URL we will call to get weather data for a city
