@@ -13,6 +13,14 @@ npm install
 ```
 PORT=3000
 WEATHER_API_KEY=your_weatherapi_key_here
+
+# MongoDB Connection
+# Replace <db_password> with your actual MongoDB password
+MONGODB_URI=mongodb+srv://aabocade0_db_user:YOUR_PASSWORD_HERE@app-two.vamjv4w.mongodb.net/?appName=app-two
+
+# JWT Secret (use a random string for production)
+JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
+JWT_EXPIRE=30d
 ```
 
 3) Start the server
@@ -26,7 +34,57 @@ You should see:
 
 ## 📡 API Endpoints
 
+### POST /api/auth/register
+Register a new user.
+
+**Request Body:**
+```json
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+**Success Response:**
+```json
+{
+  "success": true,
+  "token": "jwt_token_here",
+  "user": {
+    "id": "user_id",
+    "username": "john_doe",
+    "email": "john@example.com"
+  }
+}
+```
+
+### POST /api/auth/login
+Login user.
+
+**Request Body:**
+```json
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+**Success Response:**
+```json
+{
+  "success": true,
+  "token": "jwt_token_here",
+  "user": {
+    "id": "user_id",
+    "username": "john_doe",
+    "email": "john@example.com"
+  }
+}
+```
+
 ### GET /api/weather?city=London
+**Protected Route** - Requires Authorization header: `Bearer <token>`
 Proxies to WeatherAPI and returns the same shape as WeatherAPI’s `current.json`.
 
 **Success response (example)**

@@ -1,4 +1,4 @@
-const axios = require('axios'); 
+const axios = require('axios');
 // axios = a tool that allows the backend to send HTTP requests (like calling WeatherAPI)
 
 const WEATHER_API_BASE_URL = 'https://api.weatherapi.com/v1/current.json';
@@ -7,9 +7,9 @@ const WEATHER_API_BASE_URL = 'https://api.weatherapi.com/v1/current.json';
 const weatherController = {
   // This method handles GET /api/weather?city=London
   getWeather: async (req, res) => {
-    
+
     // req.query.city = value from URL like ?city=Hargeisa
-    const city = req.query.city.trim(); 
+    const city = req.query.city.trim();
 
     // Read the secret API key stored in backend/.env
     const apiKey = process.env.WEATHER_API_KEY;
