@@ -1,3 +1,5 @@
+// fully working registerscreen 
+
 import React, { useState, useContext } from 'react';
 import {
   View,
