@@ -18,6 +18,25 @@ import {
 } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 
+const RegisterScreen = ({ navigation }) => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { register } = useContext(AuthContext);
+
+  const handleRegister = async () => {
+    // Validate input
+    if (!username.trim() || !email.trim() || !password.trim()) {
+      Alert.alert('Error', 'Please fill in all fields');
+      return;
+    }
+
+    if (password.length < 6) {
+      Alert.alert('Error', 'Password must be at least 6 characters');
+      return;
+    }
+
     setLoading(true);
     try {
       await register(username.trim(), email.trim(), password);
@@ -213,5 +232,6 @@ const styles = StyleSheet.create({
 });
 
 export default RegisterScreen;
+
 
 
